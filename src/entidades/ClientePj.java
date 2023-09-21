@@ -13,7 +13,7 @@ public class ClientePj extends Pessoa{
     public ClientePj() {
     }
 
-    public ClientePj(int id, boolean tipoCliente, String nome, String email, Date dataDeNascimento, String telefone) {
+    public ClientePj(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone) {
         super(id, tipoCliente, nome, email, dataDeNascimento, telefone);
 
         this.cnpj = cnpj;

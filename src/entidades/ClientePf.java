@@ -11,7 +11,7 @@ public class ClientePf extends Pessoa{
     public ClientePf() {
     }
 
-    public ClientePf(int id, boolean tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf) {
+    public ClientePf(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf) {
         super(id, tipoCliente, nome, email, dataDeNascimento, telefone, rg, cpf);
 
         this.rendaMensal = rendaMensal;

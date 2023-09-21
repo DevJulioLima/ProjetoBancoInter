@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public abstract class Pessoa {
     private int id;
-    private boolean tipoCliente;
+    private int tipoCliente;
     private String nome;
     private String email;
     private Date dataDeNascimento;
@@ -15,7 +15,7 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(int id, boolean tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf) {
+    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nome = nome;
@@ -26,7 +26,7 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 
-    public Pessoa(int id, boolean tipoCliente, String nome, String email, Date dataDeNascimento, String telefone) {
+    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nome = nome;
@@ -43,11 +43,11 @@ public abstract class Pessoa {
         this.id = id;
     }
 
-    public boolean isTipoCliente() {
+    public int getTipoCliente() {
         return tipoCliente;
     }
 
-    public void setTipoCliente(boolean tipoCliente) {
+    public void setTipoCliente(int tipoCliente) {
         this.tipoCliente = tipoCliente;
     }
 
