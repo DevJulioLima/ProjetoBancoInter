@@ -22,12 +22,12 @@ public class teste {
         DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
-        clientePf.setCpf(("14785236984"));
+        clientePf.setCpf(("16984"));
         clientePf.setNome("ze pilinta");
         clientePf.setRg(("10048529"));
         clientePf.setDataDeNascimento(Date.valueOf(d1));
         clientePf.setTelefone(("81984069184"));
-        clientePf.setEmail("zepilinta@gmail.com");
+        clientePf.setEmail("zepilintaal.com");
         clientePf.setTipoCliente(1);
 
         clientePfServico.cadastrar(clientePf);
