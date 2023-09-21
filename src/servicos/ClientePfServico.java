@@ -16,7 +16,7 @@ public class ClientePfServico {
 
     public void cadastrar(ClientePf clientePf) throws Exception {
 
-       this.repositorioClientePf.cadastrar(clientePf);
+       repositorioClientePf.cadastrar(clientePf);
 
     }
 
