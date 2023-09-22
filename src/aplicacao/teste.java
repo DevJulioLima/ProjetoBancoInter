@@ -21,18 +21,21 @@ public class teste {
 
         DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-
-        clientePf.setCpf(("16955584"));
-        clientePf.setNome("ze pilinta");
-        clientePf.setRg(("10048529"));
+        System.out.println("Digite Seu Cpf: ");
+        clientePf.setCpf(sc.next());
+        System.out.println("Digite Seu Nome: ");
+        clientePf.setNome(sc.next());
+        sc.nextLine();
+        System.out.println("Digite O Numero Do Seu Rg: ");
+        clientePf.setRg(sc.next());
         clientePf.setDataDeNascimento(Date.valueOf(d1));
-        clientePf.setTelefone(("81984069184"));
-        clientePf.setEmail("zepilial.com");
+        System.out.println("Digite O Numero Do Seu Cell: ");
+        clientePf.setTelefone(sc.next());
+        System.out.println("Digite Seu Email: ");
+        clientePf.setEmail(sc.next());
         clientePf.setTipoCliente(1);
 
         clientePfServico.cadastrar(clientePf);
-
-
 
         sc.close();
     }
