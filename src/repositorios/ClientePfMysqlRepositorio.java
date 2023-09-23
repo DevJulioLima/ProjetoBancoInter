@@ -18,9 +18,9 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
    public void cadastrar (ClientePf clientePf) throws Exception {
 
         try{
-            String sql_clientePf = "INSERT INTO tbpessoa"
-                    +"(CPF, NOME,  RG,  DATA_DE_NASCIMENTO, TELEFONE, EMAIL, CLIENTE)"
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?)";
+            String sql_clientePf = "INSERT INTO tbpessoa_fisica"
+                    +"(CPF, NOME,  RG,  DATA_DE_NASCIMENTO, TELEFONE, EMAIL)"
+                    + "VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = Conexao.getConexao().prepareStatement(sql_clientePf);
             ps = Conexao.getConexao().prepareStatement(sql_clientePf);
             ps.setString(1, clientePf.getCpf());
@@ -29,7 +29,6 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
             ps.setDate(4, clientePf.getDataDeNascimento());
             ps.setString(5, clientePf.getTelefone());
             ps.setString(6, clientePf.getEmail());
-            ps.setInt(7, clientePf.getTipoCliente());
 
             // execução
 
@@ -42,7 +41,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
    }
    public void alterar(ClientePf clientePf) throws Exception{
 
-       String sql_clientepf_alterar = "UPDATE tbpessoa SET nome = ?, rg = ?, data_de_nascimento = ?, telefone = ?, email = ? "
+       String sql_clientepf_alterar = "UPDATE tbpessoa_fisica SET nome = ?, rg = ?, data_de_nascimento = ?, telefone = ?, email = ? "
                + "WHERE cpf = ?";
 
        PreparedStatement ps = null;
@@ -75,7 +74,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
 
     public List<ClientePf> getClientesPf() throws Exception {
 
-            String sql_lista_clientes_pf = "SELECT * FROM tbpessoa";
+            String sql_lista_clientes_pf = "SELECT * FROM tbpessoa_fisica";
 
             List<ClientePf> clientePfs = new ArrayList<>();
             PreparedStatement ps = null;
@@ -114,7 +113,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
 
    public void deletarByCPF(String cpf) throws Exception{
 
-       String sql_deletar_clientepf = "DELETE FROM tbpessoa WHERE cpf = ?";
+       String sql_deletar_clientepf = "DELETE FROM tbpessoa_fisica WHERE cpf = ?";
 
        PreparedStatement  ps = null;
 

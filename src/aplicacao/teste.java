@@ -1,5 +1,5 @@
 package aplicacao;
-
+/*
 import entidades.ClientePf;
 import entidades.Pessoa;
 import repositorios.ClientePfMysqlRepositorio;
@@ -22,7 +22,7 @@ public class teste {
         // cadastrar
 
        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-/*
+
         System.out.println("Digite Seu Cpf: ");
         clientePf.setCpf(sc.next());
         System.out.println("Digite Seu Nome: ");
@@ -35,7 +35,6 @@ public class teste {
         clientePf.setTelefone(sc.next());
         System.out.println("Digite Seu Email: ");
         clientePf.setEmail(sc.next());
-        clientePf.setTipoCliente(1);
 
         clientePfServico.cadastrar(clientePf);
 
@@ -67,16 +66,17 @@ public class teste {
 
 
         clientePf.setNome("roberto");
-        clientePf.setRg("10256323");
+        clientePf.setRg("10048525");
         clientePf.setDataDeNascimento(Date.valueOf(d1));
-        clientePf.setTelefone("81985232014");
-        clientePf.setEmail("juliomcgarrett@gmail.com");
+        clientePf.setTelefone("81984069178");
+        clientePf.setEmail("devjuliolima@gmail.com");
         clientePf.setCpf("70994090420");
 
         clientePfServico.alterar(clientePf);
 
-*/
+
         // deletar cliente pelo cpf
+
         System.out.println("digite o cpf para deletar: ");
         clientePf.setCpf(sc.next());
         clientePfServico.excluir(clientePf);
@@ -87,4 +87,4 @@ public class teste {
     }
 
     }
-
+*/
