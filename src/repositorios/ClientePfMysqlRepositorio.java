@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import static conexao.Conexao.conn;
 
@@ -39,8 +41,44 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
         }
    }
 
+    public List<ClientePf> getClientesPf() throws Exception {
 
+            String sql_lista_clientes_pf = "SELECT * FROM tbpessoa";
 
+            List<ClientePf> clientePfs = new ArrayList<>();
+            PreparedStatement ps = null;
+            ResultSet rst = null;
+            try{
+             ps = Conexao.getConexao().prepareStatement(sql_lista_clientes_pf);
+            rst = ps.executeQuery();
+            while (rst.next()){
+                ClientePf clientePf = new ClientePf();
+
+                clientePf.setCpf(rst.getString("cpf"));
+                clientePf.setNome(rst.getString("nome"));
+                clientePf.setRg(rst.getString("rg"));
+                clientePf.setDataDeNascimento(rst.getDate("data_de_nascimento"));
+                clientePf.setTelefone(rst.getString("telefone"));
+                clientePf.setEmail(rst.getString("email"));
+
+                clientePfs.add(clientePf);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+                try{
+                if(rst != null){
+                    rst.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+            }catch (Exception e){
+                    e.printStackTrace();
+                }
+        return clientePfs;
+    }
+   }
 
 
     @Override

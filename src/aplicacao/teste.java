@@ -16,10 +16,11 @@ public class teste {
         Scanner sc = new Scanner(System.in);
         ClientePfServico clientePfServico = new ClientePfServico();
         ClientePf clientePf = new ClientePf();
+        ClientePfMysqlRepositorio clientePfMysqlRepositorio = new ClientePfMysqlRepositorio();
 
+        // cadastrar
 
-
-        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+       /* DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         System.out.println("Digite Seu Cpf: ");
         clientePf.setCpf(sc.next());
@@ -35,7 +36,15 @@ public class teste {
         clientePf.setEmail(sc.next());
         clientePf.setTipoCliente(1);
 
-        clientePfServico.cadastrar(clientePf);
+        clientePfServico.cadastrar(clientePf);*/
+
+
+
+        // listar
+
+        for(ClientePf c : clientePfMysqlRepositorio.getClientesPf()){
+            System.out.println("Cliente: " + c.getNome());
+        }
 
         sc.close();
     }
