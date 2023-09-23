@@ -43,7 +43,19 @@ public class teste {
         // listar
 
         for(ClientePf c : clientePfMysqlRepositorio.getClientesPf()){
+            // listar por nome
             System.out.println("Cliente: " + c.getNome());
+            // listar por cpf
+            System.out.println("cpf: " + c.getCpf());
+            // listar por rg
+            System.out.println("rg: " + c.getRg());
+            // listar por data de nascimento
+            System.out.println("data de nascimento: " + c.getDataDeNascimento());
+            // listar por telefone
+            System.out.println("telefone: " + c.getTelefone());
+            // listar por email
+            System.out.println("email: " + c.getEmail());
+            System.out.println();
         }
 
         sc.close();
