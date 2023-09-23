@@ -22,8 +22,8 @@ public class teste {
         // cadastrar
 
        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        /*System.out.println("Digite Seu Cpf: ");
+/*
+        System.out.println("Digite Seu Cpf: ");
         clientePf.setCpf(sc.next());
         System.out.println("Digite Seu Nome: ");
         clientePf.setNome(sc.next());
@@ -37,14 +37,14 @@ public class teste {
         clientePf.setEmail(sc.next());
         clientePf.setTipoCliente(1);
 
-        //clientePfServico.cadastrar(clientePf);
-        clientePfMysqlRepositorio.cadastrar(clientePf);*/
+        clientePfServico.cadastrar(clientePf);
+
 
 
 
         // listar
 
-       /* for(ClientePf c : clientePfMysqlRepositorio.getClientesPf()){
+        for(ClientePf c : clientePfMysqlRepositorio.getClientesPf()){
             // listar por nome
             System.out.println("Cliente: " + c.getNome());
             // listar por cpf
@@ -58,24 +58,30 @@ public class teste {
             // listar por email
             System.out.println("email: " + c.getEmail());
             System.out.println();
-        }*/
+        }
+
+
 
         // alterar cliente
 
-        /*
 
-        clientePf.setNome("julio severino de lima filho");
+
+        clientePf.setNome("roberto");
         clientePf.setRg("10256323");
         clientePf.setDataDeNascimento(Date.valueOf(d1));
         clientePf.setTelefone("81985232014");
         clientePf.setEmail("juliomcgarrett@gmail.com");
         clientePf.setCpf("70994090420");
 
-        clientePfMysqlRepositorio.alterar(clientePf1);
-*/
+        clientePfServico.alterar(clientePf);
 
+*/
         // deletar cliente pelo cpf
-        clientePfMysqlRepositorio.deletarByCPF("70994090441");
+        System.out.println("digite o cpf para deletar: ");
+        clientePf.setCpf(sc.next());
+        clientePfServico.excluir(clientePf);
+
+
 
         sc.close();
     }

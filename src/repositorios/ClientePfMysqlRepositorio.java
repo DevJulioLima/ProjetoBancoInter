@@ -42,7 +42,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
    }
    public void alterar(ClientePf clientePf) throws Exception{
 
-       String sql_clientepf_alterar = "UPDATE tbpessoa SET nome = ?, rg = ?, data_de_nascimento = ? telefone = ?, email = ?"
+       String sql_clientepf_alterar = "UPDATE tbpessoa SET nome = ?, rg = ?, data_de_nascimento = ?, telefone = ?, email = ? "
                + "WHERE cpf = ?";
 
        PreparedStatement ps = null;
