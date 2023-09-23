@@ -5,6 +5,7 @@ import entidades.Pessoa;
 import repositorios.ClientePfMysqlRepositorio;
 import servicos.ClientePfServico;
 
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,15 +15,15 @@ public class teste {
     public static void main(String[] args) throws Exception {
         LocalDate d1 = LocalDate.parse("1997-06-14");
         Scanner sc = new Scanner(System.in);
-        ClientePfServico clientePfServico = new ClientePfServico();
         ClientePf clientePf = new ClientePf();
+        ClientePfServico clientePfServico = new ClientePfServico();
         ClientePfMysqlRepositorio clientePfMysqlRepositorio = new ClientePfMysqlRepositorio();
 
         // cadastrar
 
-       /* DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+       DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        System.out.println("Digite Seu Cpf: ");
+        /*System.out.println("Digite Seu Cpf: ");
         clientePf.setCpf(sc.next());
         System.out.println("Digite Seu Nome: ");
         clientePf.setNome(sc.next());
@@ -36,13 +37,14 @@ public class teste {
         clientePf.setEmail(sc.next());
         clientePf.setTipoCliente(1);
 
-        clientePfServico.cadastrar(clientePf);*/
+        //clientePfServico.cadastrar(clientePf);
+        clientePfMysqlRepositorio.cadastrar(clientePf);*/
 
 
 
         // listar
 
-        for(ClientePf c : clientePfMysqlRepositorio.getClientesPf()){
+       /* for(ClientePf c : clientePfMysqlRepositorio.getClientesPf()){
             // listar por nome
             System.out.println("Cliente: " + c.getNome());
             // listar por cpf
@@ -56,7 +58,24 @@ public class teste {
             // listar por email
             System.out.println("email: " + c.getEmail());
             System.out.println();
-        }
+        }*/
+
+        // alterar cliente
+
+        /*
+
+        clientePf.setNome("julio severino de lima filho");
+        clientePf.setRg("10256323");
+        clientePf.setDataDeNascimento(Date.valueOf(d1));
+        clientePf.setTelefone("81985232014");
+        clientePf.setEmail("juliomcgarrett@gmail.com");
+        clientePf.setCpf("70994090420");
+
+        clientePfMysqlRepositorio.alterar(clientePf1);
+*/
+
+        // deletar cliente pelo cpf
+        clientePfMysqlRepositorio.deletarByCPF("70994090441");
 
         sc.close();
     }

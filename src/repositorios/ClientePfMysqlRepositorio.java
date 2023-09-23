@@ -40,6 +40,38 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
             e.printStackTrace();
         }
    }
+   public void alterar(ClientePf clientePf) throws Exception{
+
+       String sql_clientepf_alterar = "UPDATE tbpessoa SET nome = ?, rg = ?, data_de_nascimento = ? telefone = ?, email = ?"
+               + "WHERE cpf = ?";
+
+       PreparedStatement ps = null;
+
+       try{
+           ps = Conexao.getConexao().prepareStatement(sql_clientepf_alterar);
+           ps.setString(1, clientePf.getNome());
+           ps.setString(2, clientePf.getRg());
+           ps.setDate(3, clientePf.getDataDeNascimento());
+           ps.setString(4, clientePf.getTelefone());
+           ps.setString(5, clientePf.getEmail());
+
+           // qual CPF que deseja atualizar
+           ps.setString(6, clientePf.getCpf());
+
+           ps.execute();
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }finally {
+           try{
+               if(ps != null){
+                   ps.close();
+               }
+           }catch (Exception e){
+               e.printStackTrace();
+           }
+       }
+   }
 
     public List<ClientePf> getClientesPf() throws Exception {
 
@@ -80,7 +112,30 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
     }
    }
 
+   public void deletarByCPF(String cpf) throws Exception{
 
+       String sql_deletar_clientepf = "DELETE FROM tbpessoa WHERE cpf = ?";
+
+       PreparedStatement  ps = null;
+
+       try{
+           ps = Conexao.getConexao().prepareStatement(sql_deletar_clientepf);
+
+           ps.setString(1, cpf);
+
+           ps.execute();
+       }catch (Exception e){
+           e.printStackTrace();
+       }finally {
+           try{
+           if(ps != null){
+               ps.close();
+           }
+       }catch (SQLException e){
+               e.printStackTrace();
+           }
+      }
+   }
     @Override
     public ClientePf listarPorNome(String nome) throws SQLException {
         return null;
