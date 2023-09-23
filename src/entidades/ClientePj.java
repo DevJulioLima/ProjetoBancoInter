@@ -7,6 +7,7 @@ public class ClientePj extends Pessoa{
     private String cnpj;
     private String ie;
     private String nomeFantasia;
+    private String estado;
 
     private ArrayList<ClientePj> clientePj = new ArrayList<>();
 
@@ -19,6 +20,7 @@ public class ClientePj extends Pessoa{
         this.cnpj = cnpj;
         this.ie = ie;
         this.nomeFantasia = nomeFantasia;
+        this.estado = estado;
     }
 
     public String getCnpj() {
@@ -35,5 +37,21 @@ public class ClientePj extends Pessoa{
 
     public void setNomeFantasia(String nomeFantasia) {
         this.nomeFantasia = nomeFantasia;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getIe() {
+        return ie;
+    }
+
+    public void setIe(String ie) {
+        this.ie = ie;
     }
 }
