@@ -10,63 +10,71 @@ public class ClientePjServico implements iClientePjServico {
 
     private ClientePjMysqlRepositorio repositorioClientePj = new ClientePjMysqlRepositorio();
 
-    public ClientePjServico(){
+    public ClientePjServico() {
         this.repositorioClientePj = repositorioClientePj;
     }
 
     @Override
+
     public void cadastrar(ClientePj clientePj) throws Exception {
-        if(clientePj.getCnpj().length() != 14)
+
+        if (clientePj.getCnpj().length() != 14) {
             System.out.println("CNPJ INCORRETO!");
-            else{
-            if(clientePj.getNomeFantasia().isBlank())
+        } else {
+            if (clientePj.getNomeFantasia().isBlank())
                 System.out.println("NOME EM BRANCO!");
-                    else{
-                        if(clientePj.getNomeFantasia().isEmpty())
-                            System.out.println("NOME VAZIO!");
-                        else{
-                            if(clientePj.getNomeFantasia().length() <= 3)
-                                System.out.println("DIGITE O NOME FANTASIA!");
-                            if(clientePj.getEstado().isBlank())
-                                System.out.println("ESTADO EM BRANCO");
-                            else{
-                                if(clientePj.getEstado().isEmpty())
-                                    System.out.println("ESTADO VAZIO!");
-                                else{
-                                    if(clientePj.getEstado().length() <= 1)
-                                        System.out.println("DIGITE SEU ESTADO!");
-                                    else{
-                                        repositorioClientePj.cadastrar(clientePj);
-                                        System.out.println("CLIENTE JURIDICA CADASTRADO COM SUCESSO!");
-                                    }
+            else {
+                if (clientePj.getNomeFantasia().isEmpty())
+                    System.out.println("NOME VAZIO!");
+                else {
+                    if (clientePj.getNomeFantasia().length() <= 3)
+                        System.out.println("DIGITE O NOME FANTASIA!");
+                    if (clientePj.getEstado().isBlank())
+                        System.out.println("ESTADO EM BRANCO");
+                    else {
+                        if (clientePj.getEstado().isEmpty())
+                            System.out.println("ESTADO VAZIO!");
+                        else {
+                            if (clientePj.getEstado().length() <= 1)
+                                System.out.println("DIGITE SEU ESTADO!");
+                            else {
+                                if (clientePj.getSenha().length() >= 20) {
+                                    System.out.println("ATÉ 20 CARACTERES!");
                                 }
                             }
+                            if (clientePj.getSenha().isBlank()) {
+                                System.out.println("SENHA EM BRANCO!");
+                            } else {
+                                repositorioClientePj.cadastrar(clientePj);
+                                System.out.println("CLIENTE JURIDICA CADASTRADO COM SUCESSO!");
+                            }
                         }
+                    }
+                }
             }
         }
     }
 
 
-
     @Override
     public void alterar(ClientePj clientePj) throws Exception {
-        if(clientePj.getNomeFantasia().isBlank())
+        if (clientePj.getNomeFantasia().isBlank())
             System.out.println("NOME EM BRANCO!");
-        else{
-            if(clientePj.getNomeFantasia().isEmpty())
+        else {
+            if (clientePj.getNomeFantasia().isEmpty())
                 System.out.println("NOME VAZIO!");
-            else{
-                if(clientePj.getNomeFantasia().length() <= 3)
+            else {
+                if (clientePj.getNomeFantasia().length() <= 3)
                     System.out.println("DIGITE O NOME FANTASIA!");
-                if(clientePj.getEstado().isBlank())
+                if (clientePj.getEstado().isBlank())
                     System.out.println("ESTADO EM BRANCO");
-                else{
-                    if(clientePj.getEstado().isEmpty())
+                else {
+                    if (clientePj.getEstado().isEmpty())
                         System.out.println("ESTADO VAZIO!");
-                    else{
-                        if(clientePj.getEstado().length() <= 1)
+                    else {
+                        if (clientePj.getEstado().length() <= 1)
                             System.out.println("DIGITE SEU ESTADO!");
-                        else{
+                        else {
                             repositorioClientePj.alterar(clientePj);
                             System.out.println("CLIENTE ALTERADO COM SUCESSO!");
                         }
@@ -85,11 +93,13 @@ public class ClientePjServico implements iClientePjServico {
 
     @Override
     public void excluir(ClientePj clientePj) throws Exception {
-        if(clientePj.getCnpj().length() != 14){
+        if (clientePj.getCnpj().length() != 14) {
             System.out.println("CNPJ INCORRETO!");
-        }else{
+        } else {
             repositorioClientePj.deletarByCNPJ(clientePj.getCnpj());
             System.out.println("CLIENTE DELETADO COM SUCESSO!");
         }
     }
+
+
 }

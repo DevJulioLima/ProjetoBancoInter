@@ -18,8 +18,8 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
 
         try{
             String sql_clientepj = "INSERT INTO tbpessoa_juridica"
-                    +"(CNPJ, INSCRICAO_ESTADUAL, NOME_FANTASIA, ESTADO)"
-                    +"VALUES(?, ?, ?, ?)";
+                    +"(CNPJ, INSCRICAO_ESTADUAL, NOME_FANTASIA, ESTADO, SENHA)"
+                    +"VALUES(?, ?, ?, ?, ?)";
 
             PreparedStatement ps = Conexao.getConexao().prepareStatement(sql_clientepj);
             ps = Conexao.getConexao().prepareStatement(sql_clientepj);
@@ -27,6 +27,7 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
             ps.setString(2, clientePj.getIe());
             ps.setString(3,clientePj.getNomeFantasia());
             ps.setString(4, clientePj.getEstado());
+            ps.setString(5, clientePj.getSenha());
 
             // Execuçao
 
@@ -138,5 +139,54 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
     @Override
     public ClientePf listaPorCpf(String cpf) throws SQLException {
         return null;
+    }
+
+    public boolean validarUsuario(String cnpj , String senha) throws SQLException// SEU LOGIN E SENHA DIGITADOS NOS CAMPOS DE TEXTO (TEXTFIELD)
+    {
+        boolean ret = false;
+        String sql = "SELECT * FROM tbpessoa_juridica WHERE CNPJ = ? AND SENHA = ?";
+        PreparedStatement smt = Conexao.getConexao().prepareStatement(sql);
+
+        smt.setString(1,cnpj);
+        smt.setString(2,senha);
+
+        ResultSet rs = smt.executeQuery();
+
+        if(rs.next())
+        {
+
+            ret = true;
+
+        }
+        rs.close();
+        smt.close();
+        return ret;
+    }
+
+    public boolean validarcnpj (String cnpj) throws SQLException// SEU LOGIN E SENHA DIGITADOS NOS CAMPOS DE TEXTO (TEXTFIELD)
+    {
+        boolean ret = false;
+        String sql = "SELECT * FROM tbpessoa_juridica WHERE CNPJ = ?";
+        PreparedStatement smt = Conexao.getConexao().prepareStatement(sql);
+
+        smt.setString(1, cnpj);
+
+
+        ResultSet rs = smt.executeQuery();
+
+        if (rs.next()) {
+
+            System.out.println("Já existe no banco!");
+            ret = true;
+            rs.close();
+            smt.close();
+
+        }else {
+            System.out.println("Não existe no banco!");
+            rs.close();
+            smt.close();
+        }
+
+        return ret;
     }
 }

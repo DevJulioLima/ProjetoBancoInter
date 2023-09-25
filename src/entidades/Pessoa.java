@@ -11,11 +11,12 @@ public abstract class Pessoa {
     private String telefone;
     private String rg;
     private String cpf;
+    private String senha;
 
     public Pessoa() {
     }
 
-    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf) {
+    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf, String senha) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nome = nome;
@@ -24,15 +25,17 @@ public abstract class Pessoa {
         this.telefone = telefone;
         this.rg = rg;
         this.cpf = cpf;
+        this.senha = senha;
     }
 
-    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone) {
+    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String senha) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nome = nome;
         this.email = email;
         this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
+        this.senha = senha;
     }
 
     public int getId() {
@@ -97,5 +100,13 @@ public abstract class Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getSenha(){
+        return senha;
+    }
+
+    public void setSenha(String senha){
+        this.senha = senha;
     }
 }
