@@ -19,16 +19,17 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
 
         try{
             String sql_clientePf = "INSERT INTO tbpessoa_fisica"
-                    +"(CPF, NOME,  RG,  DATA_DE_NASCIMENTO, TELEFONE, EMAIL)"
+                    +"(CPF, NOME,  RG, TELEFONE, EMAIL, SENHA)"
                     + "VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = Conexao.getConexao().prepareStatement(sql_clientePf);
             ps = Conexao.getConexao().prepareStatement(sql_clientePf);
             ps.setString(1, clientePf.getCpf());
             ps.setString(2 , clientePf.getNome());
             ps.setString(3, clientePf.getRg());
-            ps.setDate(4, clientePf.getDataDeNascimento());
-            ps.setString(5, clientePf.getTelefone());
-            ps.setString(6, clientePf.getEmail());
+            //ps.setDate(4, clientePf.getDataDeNascimento());
+            ps.setString(4, clientePf.getTelefone());
+            ps.setString(5, clientePf.getEmail());
+            ps.setString(6,clientePf.getSenha());
 
             // execução
 
@@ -41,7 +42,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
    }
    public void alterar(ClientePf clientePf) throws Exception{
 
-       String sql_clientepf_alterar = "UPDATE tbpessoa_fisica SET nome = ?, rg = ?, data_de_nascimento = ?, telefone = ?, email = ? "
+       String sql_clientepf_alterar = "UPDATE tbpessoa_fisica SET nome = ?, rg = ?, telefone = ?, email = ? "
                + "WHERE cpf = ?";
 
        PreparedStatement ps = null;
@@ -50,12 +51,12 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
            ps = Conexao.getConexao().prepareStatement(sql_clientepf_alterar);
            ps.setString(1, clientePf.getNome());
            ps.setString(2, clientePf.getRg());
-           ps.setDate(3, clientePf.getDataDeNascimento());
-           ps.setString(4, clientePf.getTelefone());
-           ps.setString(5, clientePf.getEmail());
+           //ps.setDate(3, clientePf.getDataDeNascimento());
+           ps.setString(3, clientePf.getTelefone());
+           ps.setString(4, clientePf.getEmail());
 
            // qual CPF que deseja atualizar
-           ps.setString(6, clientePf.getCpf());
+           ps.setString(5, clientePf.getCpf());
 
            ps.execute();
 
@@ -88,7 +89,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
                 clientePf.setCpf(rst.getString("cpf"));
                 clientePf.setNome(rst.getString("nome"));
                 clientePf.setRg(rst.getString("rg"));
-                clientePf.setDataDeNascimento(rst.getDate("data_de_nascimento"));
+               // clientePf.setDataDeNascimento(rst.getDate("data_de_nascimento"));
                 clientePf.setTelefone(rst.getString("telefone"));
                 clientePf.setEmail(rst.getString("email"));
 
@@ -143,5 +144,80 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
     @Override
     public ClientePf listaPorCpf(String cpf) throws SQLException {
         return null;
+    }
+
+    public boolean validarUsuario(String cpf , String senha) throws SQLException
+    {
+        boolean ret = false;
+        String sql = "SELECT * FROM tbpessoa_fisica WHERE CPF = ? AND SENHA = ?";
+        PreparedStatement smt = Conexao.getConexao().prepareStatement(sql);
+
+        smt.setString(1,cpf);
+        smt.setString(2,senha);
+
+        ResultSet rs = smt.executeQuery();
+
+        if(rs.next())
+        {
+
+            ret = true;
+
+        }
+        rs.close();
+        smt.close();
+        return ret;
+    }
+
+    public boolean validarcpf (String cpf) throws SQLException
+    {
+        boolean ret = false;
+        String sql = "SELECT * FROM tbpessoa_fisica WHERE CPF = ?";
+        PreparedStatement smt = Conexao.getConexao().prepareStatement(sql);
+
+        smt.setString(1, cpf);
+
+
+        ResultSet rs = smt.executeQuery();
+
+        if (rs.next()) {
+
+            System.out.println("Existe no banco!");
+            ret = true;
+            rs.close();
+            smt.close();
+
+        }else {
+            System.out.println("Não existe no banco!");
+            rs.close();
+            smt.close();
+        }
+
+        return ret;
+    }
+    public boolean validarsenha (String senha) throws SQLException
+    {
+        boolean ret = false;
+        String sql = "SELECT * FROM tbpessoa_fisica WHERE SENHA = ?";
+        PreparedStatement smt = Conexao.getConexao().prepareStatement(sql);
+
+        smt.setString(1, senha);
+
+
+        ResultSet rs = smt.executeQuery();
+
+        if (rs.next()) {
+
+
+            ret = true;
+            rs.close();
+            smt.close();
+
+        }else {
+            System.out.println("Senha incorreta!");
+            rs.close();
+            smt.close();
+        }
+
+        return ret;
     }
 }

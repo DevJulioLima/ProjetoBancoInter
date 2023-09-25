@@ -14,8 +14,8 @@ public class ClientePj extends Pessoa{
     public ClientePj() {
     }
 
-    public ClientePj(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String senha) {
-        super(id, tipoCliente, nome, email, dataDeNascimento, telefone, senha);
+    public ClientePj(int id, int tipoCliente, String nome, String email, String telefone, String senha) {
+        super(id, tipoCliente, nome, email, telefone, senha);
 
         this.cnpj = cnpj;
         this.ie = ie;

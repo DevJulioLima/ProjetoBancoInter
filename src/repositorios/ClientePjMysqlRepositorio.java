@@ -69,6 +69,8 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
         }
     }
 
+
+
     public List<ClientePj> getClientePj() throws Exception{
 
         String sql_lista_ClientePj = "SELECT * FROM tbpessoa_juridica";
@@ -141,7 +143,7 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
         return null;
     }
 
-    public boolean validarUsuario(String cnpj , String senha) throws SQLException// SEU LOGIN E SENHA DIGITADOS NOS CAMPOS DE TEXTO (TEXTFIELD)
+    public boolean validarUsuario(String cnpj , String senha) throws SQLException
     {
         boolean ret = false;
         String sql = "SELECT * FROM tbpessoa_juridica WHERE CNPJ = ? AND SENHA = ?";
@@ -163,7 +165,7 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
         return ret;
     }
 
-    public boolean validarcnpj (String cnpj) throws SQLException// SEU LOGIN E SENHA DIGITADOS NOS CAMPOS DE TEXTO (TEXTFIELD)
+    public boolean validarcnpj (String cnpj) throws SQLException
     {
         boolean ret = false;
         String sql = "SELECT * FROM tbpessoa_juridica WHERE CNPJ = ?";
@@ -176,13 +178,39 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
 
         if (rs.next()) {
 
-            System.out.println("Já existe no banco!");
+            System.out.println("Existe no banco!");
             ret = true;
             rs.close();
             smt.close();
 
         }else {
             System.out.println("Não existe no banco!");
+            rs.close();
+            smt.close();
+        }
+
+        return ret;
+    }
+    public boolean validarsenha (String senha) throws SQLException
+    {
+        boolean ret = false;
+        String sql = "SELECT * FROM tbpessoa_juridica WHERE SENHA = ?";
+        PreparedStatement smt = Conexao.getConexao().prepareStatement(sql);
+
+        smt.setString(1, senha);
+
+
+        ResultSet rs = smt.executeQuery();
+
+        if (rs.next()) {
+
+
+            ret = true;
+            rs.close();
+            smt.close();
+
+        }else {
+            System.out.println("Senha incorreta!");
             rs.close();
             smt.close();
         }

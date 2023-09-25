@@ -12,7 +12,7 @@ public class ClientePf extends Pessoa{
     }
 
     public ClientePf(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf, String senha) {
-        super(id, tipoCliente, nome, email, dataDeNascimento, telefone, rg, cpf, senha);
+        super(id, tipoCliente, nome, email, telefone, rg, cpf, senha);
 
         this.rendaMensal = rendaMensal;
     }

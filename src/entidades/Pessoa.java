@@ -7,7 +7,7 @@ public abstract class Pessoa {
     private int tipoCliente;
     private String nome;
     private String email;
-    private Date dataDeNascimento;
+    private Date dataDeNascimento = null;
     private String telefone;
     private String rg;
     private String cpf;
@@ -16,24 +16,24 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String rg, String cpf, String senha) {
+    public Pessoa(int id, int tipoCliente, String nome, String email, String telefone, String rg, String cpf, String senha) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nome = nome;
         this.email = email;
-        this.dataDeNascimento = dataDeNascimento;
+        //this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
         this.rg = rg;
         this.cpf = cpf;
         this.senha = senha;
     }
 
-    public Pessoa(int id, int tipoCliente, String nome, String email, Date dataDeNascimento, String telefone, String senha) {
+    public Pessoa(int id, int tipoCliente, String nome, String email, String telefone, String senha) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nome = nome;
         this.email = email;
-        this.dataDeNascimento = dataDeNascimento;
+        //this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
         this.senha = senha;
     }
@@ -70,13 +70,13 @@ public abstract class Pessoa {
         this.email = email;
     }
 
-    public Date getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public void setDataDeNascimento(Date dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
+//    public Date getDataDeNascimento() {
+//        return dataDeNascimento;
+//    }
+//
+//    public void setDataDeNascimento(Date dataDeNascimento) {
+//        this.dataDeNascimento = dataDeNascimento;
+//    }
 
     public String getTelefone() {
         return telefone;
