@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import static conexao.Conexao.conn;
 
@@ -77,7 +78,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
 
             String sql_lista_clientes_pf = "SELECT * FROM tbpessoa_fisica";
 
-            List<ClientePf> clientePfs = new ArrayList<>();
+            Stack<ClientePf> clientePfs = new Stack<>();
             PreparedStatement ps = null;
             ResultSet rst = null;
             try{
@@ -93,7 +94,7 @@ public class ClientePfMysqlRepositorio implements iClientePfRepositorioJdbc{
                 clientePf.setTelefone(rst.getString("telefone"));
                 clientePf.setEmail(rst.getString("email"));
 
-                clientePfs.add(clientePf);
+                clientePfs.push(clientePf);
             }
         }catch (Exception e){
             e.printStackTrace();

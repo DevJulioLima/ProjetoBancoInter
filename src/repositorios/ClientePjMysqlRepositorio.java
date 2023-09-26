@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
 
@@ -71,11 +72,11 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
 
 
 
-    public List<ClientePj> getClientePj() throws Exception{
+    public Stack<ClientePj> getClientePj() throws Exception{
 
         String sql_lista_ClientePj = "SELECT * FROM tbpessoa_juridica";
 
-        List<ClientePj> clientePjs = new ArrayList<>();
+        Stack<ClientePj> clientePjs = new Stack<>();
         PreparedStatement ps = null;
         ResultSet rst = null;
 
@@ -90,7 +91,7 @@ public class ClientePjMysqlRepositorio implements iClientePfRepositorioJdbc {
                 clientePj.setNomeFantasia(rst.getString("nome_fantasia"));
                 clientePj.setEstado(rst.getString("estado"));
 
-                clientePjs.add(clientePj);
+                clientePjs.push(clientePj);
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -2,6 +2,7 @@ package entidades;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ClientePj extends Pessoa{
     private String cnpj;
@@ -9,7 +10,7 @@ public class ClientePj extends Pessoa{
     private String nomeFantasia;
     private String estado;
 
-    private ArrayList<ClientePj> clientePj = new ArrayList<>();
+    private Stack<ClientePj> clientePj = new Stack<>();
 
     public ClientePj() {
     }

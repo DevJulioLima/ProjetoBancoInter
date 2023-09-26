@@ -22,6 +22,7 @@ public class mainAplicacao {
         ClientePfMysqlRepositorio clientePfMysqlRepositorio = new ClientePfMysqlRepositorio();
 
 
+
         System.out.println("***** APLICATIVO INICIADO ***** \n\n");
 
         int loop1 = 1;
@@ -159,6 +160,8 @@ public class mainAplicacao {
                     case 2:
                         System.out.println("\n OPÇÕES DE CONTA: \n 1 - Criar Conta\n 2 - Alterar Dados da" +
                                 " sua conta\n 3 - Deletar Conta\n 4 - Entrar na conta\n 5 - Voltar ao menu anterior");
+
+
                         int opcao5 = sc.nextInt();
 
                         switch (opcao5) {
